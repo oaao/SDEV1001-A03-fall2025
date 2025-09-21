@@ -1,3 +1,6 @@
+# remember to look at the commit history for this file
+# to see how the example was developed step-by-step.
+
 concert_name = input("What is the name of the concert? ")
 has_ticket = input("Do you have a ticket? (y/n) ")
 
