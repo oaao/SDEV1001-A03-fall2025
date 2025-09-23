@@ -24,3 +24,12 @@ elif user_guess < random_int:
     result = "low"
 else:
     result = "error"
+
+
+
+if result == "high" and high_low_input == "h":
+    print("You are correct it's high!")
+elif result == "low" and high_low_input == "l":
+    print("You are correct it's low!")
+else: 
+    print('You are wrong and this is rigged...')
