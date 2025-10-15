@@ -8,6 +8,14 @@ Common debugger commands:
   p - {p}rint a specific variable, e.g. 'p x', 'p add', etc.
   q - {q}uit the debugger
 
+  While at a breakpoint, you can also just type in the name of a variable:
+    (Pdb) x
+    10
+
+  You can also *set* a variable to a different value:
+    (Pdb) x = 20
+    (Pdb) n       # run next line
+
 """
 
 def add(a, b):
