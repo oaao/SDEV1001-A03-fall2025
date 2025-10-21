@@ -61,7 +61,6 @@ The most classic show is Pirates of Silicon Valley
 The fourth to ninth shows on the list are:
 ['The Billion Dollar Code', 'Mr. Robot', 'The IT Crowd', 'The Dropout', 'Black Mirror', 'Severance']
 ```
-5. (optional) You can run `python tests_do_not_touch\test_tech_shows.py` to see if your program is working correctly.
 
 
 ## Exercise 3
