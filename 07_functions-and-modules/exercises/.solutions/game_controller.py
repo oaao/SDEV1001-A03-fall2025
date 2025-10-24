@@ -29,7 +29,26 @@ CONS:
 
 import games
 
+# get which game user wants to play
+game_name = input(
+	"\nWhat game do you want to play? Options are:"
+	"\nTroll, ChatGPT, CarPrice\n"
+).lower()
+
+# store chosen game function in a generic variable called 'game'
+match game_name:
+	case "troll":
+		game = games.price_is_troll
+	case "chatgpt":
+		game = games.price_is_chatgpt
+	case "carprice":
+		game = games.guess_car_price
+	case _:
+		print(f"No game called {game_name}")
+		quit()
+
+# play game with the guess
 guess = input("What do you think the price is? ")
-msg = games.guess_car_price(guess)
+msg = game(guess)
 print(msg)
 
