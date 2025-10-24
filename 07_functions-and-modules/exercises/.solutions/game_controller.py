@@ -32,7 +32,7 @@ import games
 # get which game user wants to play
 game_name = input(
 	"\nWhat game do you want to play? Options are:"
-	"\nTroll, ChatGPT, CarPrice\n"
+	"\nTroll, ChatGPT, CarPrice or {q} to quit\n"
 ).lower()
 
 # store chosen game function in a generic variable called 'game'
@@ -43,9 +43,11 @@ match game_name:
 		game = games.price_is_chatgpt
 	case "carprice":
 		game = games.guess_car_price
-	case _:
-		print(f"No game called {game_name}")
+	case "q":
+		print("Goodbye, coward!")
 		quit()
+	case _:
+		raise ValueError(f"{game_name} is not a valid option.")
 
 # play game with the guess
 guess = input("What do you think the price is? ")
