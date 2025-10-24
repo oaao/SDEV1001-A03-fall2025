@@ -29,32 +29,37 @@ CONS:
 
 import games
 
-# get which game user wants to play
-game_name = input(
-	"\nWhat game do you want to play? Options are:"
-	"\nTroll, ChatGPT, CarPrice or {q} to quit\n"
-).lower()
 
-# store chosen game function in a generic variable called 'game'
-match game_name:
-	case "troll":
-		game = games.price_is_troll
-	case "chatgpt":
-		game = games.price_is_chatgpt
-	case "carprice":
-		game = games.guess_car_price
-	case "q":
-		print("Goodbye, coward!")
-		quit()
-	case _:
-		raise ValueError(f"{game_name} is not a valid option.")
+playing = True
 
-# play game with the guess
-try:
-	guess = int(input("What do you think the price is? ")) # I expect the ValueError to occur on this line
-	msg = game(guess)
-	print(msg)
-except ValueError:
-	print("Please make sure your guess is a whole number.")
+while playing:
+	# get which game user wants to play
+	game_name = input(
+		"\nWhat game do you want to play? Options are:"
+		"\nTroll, ChatGPT, CarPrice or {q} to quit\n"
+	).lower()
 
+	# store chosen game function in a generic variable called 'game'
+	match game_name:
+		case "troll":
+			game = games.price_is_troll
+		case "chatgpt":
+			game = games.price_is_chatgpt
+		case "carprice":
+			game = games.guess_car_price
+		case "q":
+			print("Goodbye, coward!")
+			playing = False
+			quit()
+		case _:
+			raise ValueError(f"{game_name} is not a valid option.")
 
+	# play game with the guess
+	try:
+		guess = int(input("What do you think the price is? ")) # I expect the ValueError to occur on this line
+		msg = game(guess)
+		print(msg)
+	except ValueError:
+		print("Please make sure your guess is a whole number.")
+
+	print("\nLet's play again!\n")

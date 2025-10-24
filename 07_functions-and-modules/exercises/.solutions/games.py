@@ -19,6 +19,7 @@ def price_is_chatgpt(guess):
 def guess_car_price(guess: int) -> str:  # python type hinting: https://docs.python.org/3/library/typing.html
 
 	price = random.randint(5000, 25000)
+	print("(The price is somewhere between $5,000 and $25,000)")
 	print(f"DEBUG: price is {price}")
 
 	if guess == price:
@@ -34,3 +35,6 @@ def guess_car_price(guess: int) -> str:  # python type hinting: https://docs.pyt
 		msg = "Sorry, you lose!"
 
 	return msg
+
+
+# go ahead and make some new game, and change the game_name input & match-case to include it!
