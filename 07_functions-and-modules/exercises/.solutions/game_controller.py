@@ -50,7 +50,11 @@ match game_name:
 		raise ValueError(f"{game_name} is not a valid option.")
 
 # play game with the guess
-guess = input("What do you think the price is? ")
-msg = game(guess)
-print(msg)
+try:
+	guess = int(input("What do you think the price is? ")) # I expect the ValueError to occur on this line
+	msg = game(guess)
+	print(msg)
+except ValueError:
+	print("Please make sure your guess is a whole number.")
+
 

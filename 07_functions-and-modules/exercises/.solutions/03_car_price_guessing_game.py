@@ -12,7 +12,7 @@ playing = True  # state variable - controls/affects the state of the program
 while playing:
 
 	try:
-		guess = int(guess)  # I expect the ValueError to occur on this line
+		guess = int(guess)  
 		msg = guess_car_price(guess)
 		print(msg)
 	except ValueError:
