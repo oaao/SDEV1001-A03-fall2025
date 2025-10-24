@@ -4,27 +4,6 @@ whereas {guess} and {msg} inside guess_car_price() are only accessible within th
 --> this is also why those names/values don't conflict
 """
 
-import random
-
-
-def guess_car_price(guess: int) -> str:  # python type hinting: https://docs.python.org/3/library/typing.html
-
-	price = random.randint(5000, 25000)
-	print(f"DEBUG: price is {price}")
-
-	if guess == price:
-		msg = "You win; that's exactly the price! You're a cheater!"
-	elif abs(price - guess) <= 1000:  # abs() -> absolute value, i.e. abs(-5) -> 5
-		msg = "You win!"
-	# we don't have to explicitly check for: 1000 < abs(price - guess) <= 5000,
-	# because of code flow!
-	# if the program even gets to this conditional block, we already know it's > 1000
-	elif abs(price - guess) <= 5000:
-		msg = "You're close!"
-	else:
-		msg = "Sorry, you lose!"
-
-	return msg
 
 
 
