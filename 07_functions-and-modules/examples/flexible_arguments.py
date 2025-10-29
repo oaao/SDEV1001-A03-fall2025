@@ -24,7 +24,7 @@ A leading asterisk like this in Python (in front of any iterable) means,
 "unpack this series into separate terms".
 """
 
-print("We're about to unpack an unknown series of arguments")
+print("We're about to unpack an unknown series of positional arguments")
 def variable_positional_arguments(*args):
 	for arg in args:
 		print(arg)
@@ -34,5 +34,42 @@ variable_positional_arguments(1, 2, 3)
 print("or...")
 variable_positional_arguments(1, 2, 3, 4, 5, 6)
 
+a_tuple = (7, 8, 9)
+variable_positional_arguments(*a_tuple)
+
+"""
+We can also do the same for keyword arguments, which are basically
+dictionaries under the hood:
+"""
+print("\nWe're about to unpack an unknown series of keyword arguments")
+
+def variable_keyword_arguments(**kwargs):
+	for key, value in kwargs.items():
+		print(f"Got value {value} for key {key}.")
 
 
+variable_keyword_arguments(tree="ash", rock="igneous", water="tap")
+variable_keyword_arguments(plant="madagascar palm", scarf="red")
+
+a_dictionary = {"drink": "tea", "food": "oatmeal"}
+variable_keyword_arguments(**a_dictionary)
+
+
+"""
+You can use both together! Just make sure positional args go before keyword args,
+just like you'd have to order things anyway.
+"""
+
+def variable_args(*items, **options):
+	print("\nItems Ordered:")
+	for item in items:
+		print(f"  - {item}")
+	print("Options/Notes:")
+	for key, value in options.items():
+		print(f"  {key}: {value}")
+
+
+variable_args(
+	"55 burgers", "55 fries", "55 tacos", "55 pies", "55 drinks", "100 tater tots",
+	drink="Coke", side_size="Large", drink_size="Large"
+)
