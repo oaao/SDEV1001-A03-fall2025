@@ -69,7 +69,7 @@ if __name__ == "__main__":
 ```python
 # Note below we're adding *args to the function definition.
 # this allows us to pass in a nonspecific number of arguments.
-def make_pizza(size=None, crust=None, *args):
+def make_pizza(*args, size=None, crust=None):
     """Summarize the pizza we are about to make."""
     print("\nMaking a " + str(size) + "-inch pizza with " +
           crust + " crust.")
