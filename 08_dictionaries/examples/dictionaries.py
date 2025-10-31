@@ -7,7 +7,7 @@ d = {
 	"occupation": "puffin"
 }
 
-
+# you can check for uniqueness of an object by id()ing it!
 # because dictionary keys are unique (sets),
 print(
 	d.keys() == s
@@ -24,4 +24,19 @@ d2 {
 
 print(d2)
 
-# you can check for uniqueness of an object by id()ing it
+
+# you do lookups in a dictionary by *key*, rather than by *index*
+print(d["name"])  # --> "Oliver"
+
+
+# when you loop through a dictionary, you're only accessing keys:
+for thingy in d:
+	print(thingy)
+
+
+# if you want to access values *as well*, you call .items() on the dictionary
+print(d.items())  # gives us a [(key, val), ... ] pairwise structure
+
+# because the structure is pairwise, we iterate over it with *two* placeholder terms
+for key, value in d.items():
+	print(f"{key}: {value}")
