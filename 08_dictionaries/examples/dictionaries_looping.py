@@ -22,21 +22,46 @@ for key, value in d.items():
 # examples from the slides:
 # -------------------------
 
-# 1. looping over keys
+# using:
 grades = {"Alice": 85, "Bob": 92, "Charlie": 78}
+
+# 1. looping over keys
 print("Students:")
 for student in grades.keys():
-print("-", student)
+	print("-", student)
+
 
 # 2. looping over values
-grades = {"Alice": 85, "Bob": 92, "Charlie": 78}
 total = 0
 for score in grades.values():
-total += score
-print("Average score:", total / len(grades))
+	total += score
+	print("Average score:", total / len(grades))
+
 
 # 3. looping over key-value pairs
-grades = {"Alice": 85, "Bob": 92, "Charlie": 78}
 for name, score in grades.items():
-print(f"{name} scored {score}")
+	print(f"{name} scored {score}")
 
+
+# 4. you can also sort a dictionary, just like a list, using its keys
+inventory = {"apples": 5, "bananas": 2, "oranges": 8}
+for fruit, count in sorted(inventory.items()):
+print(f"{fruit.title()}: {count}")
+
+# 5. or (bonus: lambda functions, not required) sorted by its values
+#    --> the x: x[1] expression means,
+#        for the pairwise data structure [ (k, v), ... ] 
+#        take the element at index 1 for each, i.e. here v
+inventory = {"apples": 5, "bananas": 2, "oranges": 8}
+for fruit, count in sorted(inventory.items(), key=lambda x: x[1]):
+print(f"{fruit.title()}: {count}")
+
+
+# 6. and, refactoring! what if 
+inventory = {"apples": 0, "bananas": 0, "oranges": 0}
+purchases = ["apples", "bananas", "apples", "oranges", "apples"]
+for item in purchases:
+	inventory[item] += 1
+print("Inventory:")
+for fruit, count in sorted(inventory.items()):
+	print(f"{fruit.title()}: {count}")
