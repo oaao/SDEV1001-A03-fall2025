@@ -1,9 +1,12 @@
 def read_journal(filename):
 	"""Read the journal entries from a file"""
-	with open(filename, "r") as f:
-		# option 1: read all of the file at once
-		entries = f.readlines()
-	return entries
+	try:
+		with open(filename, "r") as f:
+			# option 1: read all of the file at once
+			entries = f.readlines()
+		return entries
+	except FileNotFoundError:
+		return [f"ERROR: {filename} does not exist."]
 
 
 if __name__ == "__main__":
@@ -13,4 +16,4 @@ if __name__ == "__main__":
 
 	print(f"\nJournal entries in {file_path}:")
 	for i, entry in enumerate(entries, start=1):
-		print(f"{i}: {entry.strip()}")
+		print(f"{i}: {entry}")
