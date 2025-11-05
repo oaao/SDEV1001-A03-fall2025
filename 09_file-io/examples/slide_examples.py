@@ -23,6 +23,8 @@ def read_file(filename):
 		lines = f.readlines()
 	return lines
 
+# iterating through each line will already print out a new element per new line,
+# so we strip away the \n at the end of each element so it doesn't double up (try removing it and see what happens!)
 for line in read_file("example1.txt"):
 	print(line.strip())
 
