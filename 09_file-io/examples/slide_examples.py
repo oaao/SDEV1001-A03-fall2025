@@ -15,8 +15,10 @@ Basic syntax for opening files:
 
 3. you usually pass two arguments to open(): filename/path, and mode of access, e.g.
    - 'r': read
-   - 'w': write
+   - 'w': write (overwrite)
+   - 'a': append (write to file without overwriting prev. contents)
    - 'rw': both
+
 """
 
 def read_file(filename):
@@ -51,3 +53,13 @@ def safely_read_file(filename):
 
 print("\nReading from file that doesn't exist and capturing the exception message...")
 safely_read_file("nonexistent_file")
+
+# writing to a file: the file still has to exist
+#   -> if you wanted to add to the file instead of overwrite,
+#      you'd open it in 'a' mode (append) rather than 'w' (overwrite)
+print("\nWriting to a file  that exists...")
+text = "some text to write to the file"
+with open("example2.txt", 'w') as f:
+	f.write(text)
+print(f"Wrote: '{text}' to file.")
+
