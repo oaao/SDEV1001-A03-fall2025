@@ -18,6 +18,7 @@ Basic syntax for opening files:
    - 'w': write
    - 'rw': both
 """
+
 def read_file(filename):
 	with open(filename, 'r') as f:
 		lines = f.readlines()
@@ -25,6 +26,7 @@ def read_file(filename):
 
 # iterating through each line will already print out a new element per new line,
 # so we strip away the \n at the end of each element so it doesn't double up (try removing it and see what happens!)
+print("Reading from file that exists...")
 for line in read_file("example1.txt"):
 	print(line.strip())
 
@@ -37,3 +39,15 @@ for line in read_file("example1.txt"):
 # find some way to reset the 'cursor' for reading the file, similar to e.g. a record player
 # - close and reopen the file
 # - manually file.seek(0) -> i.e. seek back to the beginning of the file buffer contents
+
+def safely_read_file(filename):
+	# if the filename doesn't exist, a FileNotFoundError exception will be thrown
+	try:
+		with open(filename) as f:
+			lines = f.readlines()
+		return lines
+	except FileNotFoundError as e:
+		print(e)
+
+print("\nReading from file that doesn't exist and capturing the exception message...")
+safely_read_file("nonexistent_file")
