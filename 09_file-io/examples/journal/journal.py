@@ -9,6 +9,12 @@ def read_journal(filename):
 		return [f"ERROR: {filename} does not exist."]
 
 
+def write_journal(filename, journal_entry):
+	"""Write a journal entry into the given file"""
+	with open(filename, "a") as file:  # 'a' mode -> 'a'ppends to file contents
+		file.write(f"{journal_entry}\n")
+
+
 if __name__ == "__main__":
 	
 	file_path = "journal.txt"
