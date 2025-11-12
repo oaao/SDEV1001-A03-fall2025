@@ -1,5 +1,11 @@
 import csv
 
+# https://docs.python.org/3/library/csv.html
+#   csv.DictReader: https://docs.python.org/3/library/csv.html#csv.DictReader
+#   csv.DictWriter: https://docs.python.org/3/library/csv.html#csv.DictWriter
+
+
+
 """ Sometimes, your CSV files will have fieldnames / column headings
     in the first row, in which case we'd just pop them out.
 
@@ -27,20 +33,57 @@ read_csv("basic_csv.csv", fieldnames=("name", "age", "occupation"))
 
 # 2. Reading from CSV to dictionary, when CSV has fieldnames in first row
 #    -> basically, I just don't provide it with any fieldnames and it should grab them from the first row in the CSV 
-def read_books(file_path):
+def read_csv(file_path):
 	
 	# this is going to be a list of dictionaries
-	books = []
+	lines = []
 	with open(file_path, 'r') as file:
 		# note: no fieldnames param, so by default it'll assume first CSV row is fieldnames
 		reader = csv.DictReader(file)
 		for row in reader:
-			books.append(row)
+			lines.append(row)
 
-	return books
+	return lines
 
 print("\nPrinting out books.csv...")
-books = read_books("books.csv")
+books = read_csv("books.csv")
 for book in books:
 	print(book["Title"], "-", book["Author"])
 
+
+# 3. writing to a CSV file - using csv.DictWriter, we
+#      - write the header row first (fieldnames as first line in CSV)
+#      - then, write rows
+def save_grades(filename, data):
+	
+	# open in write mode with no end-of-line suffix characters (like "\n"),
+	# since we're just writing to CSV and each new row will be a new line in the output file anyway
+		with open(filename, "w", newline="") as csvfile:
+		
+			# first, we need the column headers / fieldnames / dict keys:
+			# you *could* fieldnames = data[0].keys(), but I'll list them explicitly
+			fieldnames = ("student", "score")
+
+			# then, initialise the csv.DictWriter(actual_file_buffer, fieldnames)
+			writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+			# first, write the header row (fieldnames) once, then write every content row
+			writer.writeheader()
+			for row in data:
+				writer.writerow(row)
+
+
+grades = [
+	{"student": "Oliver", "score": 49},
+	{"student": "Winnie the Pooh", "score": 99},
+	{"student": "a plastic bag", "score": 75}
+]
+
+save_grades("scores.csv", grades)
+
+
+# 4. Reading & filtering CSV data, using a list expression
+print("\nReading from scores CSV file to filter for passing students...")
+passing_students = [s for s in read_csv("scores.csv") if int(s["score"]) >= 50]
+for s in passing_students:
+	print(f"{s["student"]} passed with a grade of {s["score"]}!")
