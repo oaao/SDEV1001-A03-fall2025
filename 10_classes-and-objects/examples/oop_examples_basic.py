@@ -3,7 +3,7 @@ And I OOP??????
 - Object Oriented Programming examples in code
 """
 
-print("1.a) Let's start off with a simple definition for an organism.")
+print("1. Let's start off with a simple definition for an organism.")
 class Organism:
 
 	def __init__(self, binomial_name):
@@ -28,7 +28,7 @@ print(f"The only sea cucumber that can swim is {very_cool_sea_cucumber}; it even
 
 # ---------------------------------------------------------------------------------------
 print(
-	"\n1.b) I could make an instance for every organism, but what if they need to behave slightly differently as code objects?"
+	"\n2. I could make an instance for every organism, but what if they need to behave slightly differently as code objects?"
 	"Enter inheritance!"
 )
 class LandAnimal(Organism):  # LandAnimal inherits all attributes & methods from Organism
@@ -56,7 +56,7 @@ leaf_sheep.swim()
 
 # ---------------------------------------------------------------------------------------
 print(
-	"\n1.c) You can even inherit from multiple parent/base classes!"
+	"\n3. You can even inherit from multiple parent/base classes!"
 	" Unsurprisingly, this is called multiple inheritance."
 )
 
@@ -90,5 +90,5 @@ class Combination(A, B, C):
 		super().__init__()
 
 
-print("Pay attention to which of the print statements executes...")
+print("Pay attention to which print statement / __init__() method executes...")
 order_matters = Combination()
