@@ -28,8 +28,8 @@ class Course:
 3. Let's create a file called `tools/student.py`. This file will contain a class called `Student`. Add the following code to the file:
 ```python
 class Student:
-    def __init__(self, id, name):
-        self.id = id
+    def __init__(self, id_, name):
+        self.id = id_
         self.name = name
         self.submissions = []
 
@@ -42,8 +42,8 @@ class Student:
 
 ```python
 class Assignment():
-    def __init__(self, id, name):
-        self.id = id
+    def __init__(self, id_, name):
+        self.id = id_
         self.name = name
 
     def __str__(self):
