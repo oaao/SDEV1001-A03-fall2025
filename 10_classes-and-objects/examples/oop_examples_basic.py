@@ -77,11 +77,11 @@ class A:
 
 class B:
 	def __init__(self):
-		print("Class A conquers all!")
+		print("Class B conquers all!")
 
 class C:
 	def __init__(self):
-		print("Class A conquers all!")
+		print("Class C conquers all!")
 
 
 class Combination(A, B, C):
