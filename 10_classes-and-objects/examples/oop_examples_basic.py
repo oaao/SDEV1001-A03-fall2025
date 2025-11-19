@@ -70,7 +70,7 @@ tiger_salamander.run()
 tiger_salamander.swim()
 
 
-print("Just remember that in multiple inheritance, order matters.")
+print("\nJust remember that in multiple inheritance, order matters.")
 class A:
 	def __init__(self):
 		print("Class A conquers all!")
