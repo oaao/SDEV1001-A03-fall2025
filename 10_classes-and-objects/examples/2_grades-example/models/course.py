@@ -9,3 +9,7 @@ class Course:
 
     def add_student(self, student):
         self.students.append(student)
+
+    def add_assignment(self, assignment):
+        self.assignments.append(assignment)
+
