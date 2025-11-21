@@ -18,3 +18,17 @@ class Library:
 			for book in self.books:
 				print(f"  - {book}")
 
+	def checkout_book(self, book_title):
+		# there are a number of ways of doing this, but here's one example:		
+		# 1. extract all the titles and check if the input title exists in the library
+		titles = tuple(
+			(book.title for book in self.books)
+		)
+		# 2. check all book titles in the library, remove the one that matches OR print an 'error' message
+		if book_title in titles:
+			for book in self.books:
+				if book_title == book_title:
+					self.books.remove(book)
+			print(f"\nChecked out book: {book_title}")
+		else:
+			print(f"\nCould not check out book '{book_title}':\nTitle does not exist in library inventory: {book_title}")

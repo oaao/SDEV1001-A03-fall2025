@@ -23,3 +23,7 @@ if __name__ == '__main__':
         library.add_book(b)
 
     library.list_books()
+
+    # exercise 1: try to check out an existing book & a nonexistent book
+    library.checkout_book("Mistborn")        # will remove from library
+    library.checkout_book("Giovanni's Room") # will print out that the title doesn't exist
