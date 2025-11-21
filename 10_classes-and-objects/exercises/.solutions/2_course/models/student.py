@@ -12,3 +12,11 @@ class Student:
         
     def add_submission(self, submission):
             self.submissions.append(submission)
+
+    def get_average(self):
+        # assuming all assignments are weighted equally...
+        grades = []
+        for submission in self.submissions:
+            grades.append(submission.grade)
+
+        return sum(grades) / len(grades)

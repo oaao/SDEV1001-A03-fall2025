@@ -1,3 +1,5 @@
+import random
+
 from data.course_data import assignment_data, student_data, submission_data
 
 from models.assignment import Assignment
@@ -34,23 +36,29 @@ def add_submissions_from_data(course, assignment_data):
 
 if __name__ == "__main__":
 
-	 course = Course("Colourful Entomology 304")
-	 print("before adding anything:", course)
+	course = Course("Colourful Entomology 304")
+	print("before adding anything:", course)
 
-	 add_students_from_data(course, student_data)
-	 print("after adding students:", course)
+	add_students_from_data(course, student_data)
+	print("after adding students:", course)
 
-	 add_assignments_from_data(course, assignment_data)
-	 print("after adding assignments:", course)
+	add_assignments_from_data(course, assignment_data)
+	print("after adding assignments:", course)
 
-	 add_submissions_from_data(course, submission_data)
-	 print("after adding submissions:", course)
+	add_submissions_from_data(course, submission_data)
+	print("after adding submissions:", course)
 
-	 # now that I've populated instances w/ all necessary data, I can...
-	 course_avg = course.get_course_average()
-	 print(f"The average for {course.name} is: {course_avg}%")
+	# now that I've populated instances w/ all necessary data, I can...
+	course_avg = course.get_course_average()
+	print(f"The average for {course.name} is: {course_avg}%")
 
-	 # Exercise 2.2:
-	 assignment_id = 1
-	 assignment_avg = course.get_assignment_average(1)
-	 print(f"The average for Assignment {assignment_id} is: {assignment_avg}%")
+	# Exercise 2.2:
+	assignment_id = 1
+	assignment_avg = course.get_assignment_average(1)
+	print(f"The average for Assignment {assignment_id} is: {assignment_avg}%")
+
+	# Exercise 2.3:
+	student = random.choice(course.students)
+	student_avg = student.get_average()
+	print(f"The average for {student.name} in {course.name} is: {student_avg}%")
+	
