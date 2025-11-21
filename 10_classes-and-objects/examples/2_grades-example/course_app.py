@@ -1,7 +1,7 @@
 from data.course_data import assignment_data, student_data, submission_data
 
-from tools.course import Course
-from tools.student import Student
+from models.course import Course
+from models.student import Student
 
 
 def add_students_from_data(course, student_data):
