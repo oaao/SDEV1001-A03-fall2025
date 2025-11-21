@@ -22,6 +22,14 @@ def add_assignments_from_data(course, assignment_data):
         )
         course.add_assignment(assignment_instance)
 
+def add_submissions(course, assignment_data):
+	# a 'through-model' that connects Student and Assignment instances
+    for submission in submission_data:
+        student = course.get_student(submission["student_id"])
+        assignment = course.get_assignment(submission["assignment_id"])
+        submission = Submission(student, assignment, submission["grade"])
+        student.add_submission(submission)
+
 
 if __name__ == "__main__":
 
@@ -34,3 +42,7 @@ if __name__ == "__main__":
 	 add_assignments_from_data(course, assignment_data)
 	 print("after adding assignments:", course)
 
+	 add_submissions_from_data(course, submission_data)
+	 print("after adding submissions:", course)
+
+	 

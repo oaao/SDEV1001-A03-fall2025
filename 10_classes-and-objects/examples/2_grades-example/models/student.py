@@ -9,5 +9,6 @@ class Student:
 
     def __repr__(self):
         return str(self)
-
-
+        
+    def add_submission(self, submission):
+            self.submissions.append(submission)
