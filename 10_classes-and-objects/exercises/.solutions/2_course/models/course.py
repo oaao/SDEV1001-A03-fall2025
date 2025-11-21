@@ -39,3 +39,24 @@ class Course:
                 num_submissions += 1
 
         return total / num_submissions
+
+    def get_assignment_average(self, assignment_id):
+        """
+        Instead of for loops as seen in the other method,
+        you could instead use a list/tuple comprehension to filter data,
+        and use the length of that iterable for the count of elements!
+
+        assignment_grades = []
+        for student in self.students:
+            for submission in student.submissions:
+                if submission.assignment.id == assignment_id:
+                    assignment_grades.append(submission.grade)
+
+        ^ translated into a comprehension expression, this would look like:
+        """
+        assignment_submissions = [  # this list expression could all be one line too!
+            submission.grade
+            for student in self.students for submission in student.submissions
+            if submission.assignment.id == assignment_id
+        ]
+        return sum(assignment_submissions) / len(assignment_submissions)

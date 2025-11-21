@@ -48,4 +48,9 @@ if __name__ == "__main__":
 
 	 # now that I've populated instances w/ all necessary data, I can...
 	 course_avg = course.get_course_average()
-	 print(f"The average for {course.name} is {course_avg}")
+	 print(f"The average for {course.name} is: {course_avg}%")
+
+	 # Exercise 2.2:
+	 assignment_id = 1
+	 assignment_avg = course.get_assignment_average(1)
+	 print(f"The average for Assignment {assignment_id} is: {assignment_avg}%")
