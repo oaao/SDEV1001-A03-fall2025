@@ -61,4 +61,8 @@ if __name__ == "__main__":
 	student = random.choice(course.students)
 	student_avg = student.get_average()
 	print(f"The average for {student.name} in {course.name} is: {student_avg}%")
+
+	# Exercise 2.4:
+	course.list_students()
+	course.list_assignments()
 	

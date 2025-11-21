@@ -7,7 +7,7 @@ class Course:
     def __str__(self):
         return f"{self.name} has {len(self.students)} students and {len(self.assignments)} assignments"
 
-    # writing to attributes
+    # writing to attributes ---------------------------------------------------
     def add_student(self, student):
         self.students.append(student)
 
@@ -15,7 +15,7 @@ class Course:
         self.assignments.append(assignment)
 
 
-    # reading data from attributes
+    # reading data from attributes --------------------------------------------
     def get_student(self, student_id):
         for student in self.students:
             if student.id == student_id:
@@ -28,7 +28,18 @@ class Course:
                 return assignment
         return None
 
-    # processing data
+    def list_students(self):
+        print(f"\nListing students enrolled in {self.name}:")
+        # let's use lambda expressions - i.e. throwaway, unnamed functions - to sort by ID
+        for student in sorted(self.students, key=lambda student: student.id):
+            print(f"  - {student.id}: {student}")
+
+    def list_assignments(self):
+        print(f"\nListing assignments enrolled in {self.name}:")
+        for assignment in sorted(self.assignments, key=lambda assignment: assignment.id):
+            print(f"  - {assignment.name}")
+
+    # processing data ---------------------------------------------------------
     def get_course_average(self):
         total = 0
         num_submissions = 0
