@@ -1,8 +1,9 @@
 from data.course_data import assignment_data, student_data, submission_data
 
+from models.assignment import Assignment
 from models.course import Course
 from models.student import Student
-from models.assignment import Assignment
+from models.submission import Submission
 
 
 def add_students_from_data(course, student_data):
@@ -22,7 +23,7 @@ def add_assignments_from_data(course, assignment_data):
         )
         course.add_assignment(assignment_instance)
 
-def add_submissions(course, assignment_data):
+def add_submissions_from_data(course, assignment_data):
 	# a 'through-model' that connects Student and Assignment instances
     for submission in submission_data:
         student = course.get_student(submission["student_id"])
@@ -45,4 +46,6 @@ if __name__ == "__main__":
 	 add_submissions_from_data(course, submission_data)
 	 print("after adding submissions:", course)
 
-	 
+	 # now that I've populated instances w/ all necessary data, I can...
+	 course_avg = course.get_course_average()
+	 print(f"The average for {course.name} is {course_avg}")
