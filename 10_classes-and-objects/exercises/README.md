@@ -2,15 +2,18 @@
 
 ## Exercise 1
 
-1. Using the `library_end` create `checkout_book(book)` method on the `Library` class that will remove a book from the list of books in the `Library`.
+1. Using the final library example, create `checkout_book(book)` method on the `Library` class that will remove a book from the list of books in the `Library`.
 
-2. Using the `course_example_end` add a method on the `Course` named `get_assignment_average(assignment_id)` that will return the average grade for the assignment.
 
-3. Using the `course_example_end` add a method on the `Student` named `get_average()` that will return the average grade for the student.
+## Exercise 2
+
+2. Using the final course example, add a method on the `Course` named `get_assignment_average(assignment_id)` that will return the average grade for the assignment.
+
+3. Using the final course example, add a method on the `Student` named `get_average()` that will return the average grade for the student.
    
-4. Using the `course_example_end` add methods on the `Course` named `list_students()` and `list_assignments()` whichc will list all students and assignments in the course and their ids respectively.
+4. Using thefinal course example, add methods on the `Course` named `list_students()` and `list_assignments()` whichc will list all students and assignments in the course and their ids respectively.
 
-5. Using the `course_example_end` add a new class called `School` in the tools directory:
+5. Using the final course example, add a new class called `School` in the tools directory:
 
    `School` has the following properties:
     - name of school
