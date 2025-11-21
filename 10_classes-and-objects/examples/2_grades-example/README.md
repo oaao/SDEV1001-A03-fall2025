@@ -113,7 +113,7 @@ from tools.student import Student
 def add_students(course):
     for student in student_data:
         student_instance = Student(student["id"], student["name"])
-        course.add_student(studentInstance)
+        course.add_student(student_instance)
 
 
 if __name__ == "__main__":

@@ -6,3 +6,6 @@ class Course:
 
     def __str__(self):
         return f"{self.name} has {len(self.students)} students and {len(self.assignments)} assignments"
+
+    def add_student(self, student):
+        self.students.append(student)
