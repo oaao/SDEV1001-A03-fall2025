@@ -14,7 +14,7 @@ class Organism:
 	def __repr__(self):
 		# instead of hardcoding "Organism", let's make this generic
 		# so that other classes we build off of this will automatically show *their* name! 
-		return f"{self.__class__.__name}<'{self.genus} {self.species}'>"
+		return f"{self.__class__.__name__}<'{self.genus} {self.species}'>"
 
 	def __str__(self):
 		return f"{self.genus} {self.species}"
