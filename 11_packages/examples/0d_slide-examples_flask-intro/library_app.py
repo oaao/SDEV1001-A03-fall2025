@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import jsonify, Flask
 
 app = Flask(__name__)
 
@@ -14,3 +14,13 @@ def home():
 #
 # set FLASK_APP=library_app.py
 # flask run
+
+books = [
+	{"title": "1984", "author": "George Orwell"},
+	{"title": "To Kill a Mockingbird", "author": "Harper Lee"}
+]
+
+
+@app.route("/books")
+def get_books():
+	return jsonify(books)  # serialise our list of dicts into a JSON string
