@@ -1,3 +1,5 @@
+import csv
+
 from flask import jsonify, Flask
 
 app = Flask(__name__)
@@ -15,12 +17,25 @@ def home():
 # set FLASK_APP=library_app.py
 # flask run
 
-books = [
-	{"title": "1984", "author": "George Orwell"},
-	{"title": "To Kill a Mockingbird", "author": "Harper Lee"}
-]
+# books = [
+# 	{"title": "1984", "author": "George Orwell"},
+# 	{"title": "To Kill a Mockingbird", "author": "Harper Lee"}
+# ]
 
 
-@app.route("/books")
+def load_books(filepath):
+
+	books = []
+
+	with open(filepath, mode="r", encoding="utf-8") as f:
+		csv_reader = csv.DictReader(f)
+		for row in csv_reader:
+			books.append(row)
+
+	return books
+
+
+@app.route("/books", methods=["GET"])
 def get_books():
+	books = load_books("data/books.csv")
 	return jsonify(books)  # serialise our list of dicts into a JSON string
