@@ -1,21 +1,19 @@
 import csv
+
 from flask import Flask, request, jsonify
+
+
+# you don't *need* to set a FLASK_APP environment variable.... you could also
+# flask --app my_python_file run
+#
+# other flags include
+# --debug  (error traceback on webpage if it crashes), and
+# --reload (reloads pages automatically upon saved changes)
+
+
 app = Flask(__name__)
 
-@app.route('/')
-def home():
-    return """
-    <html>
-        <head>
-            <title>UFO Sightings</title>
-        </head>
-        <body>
-            <h1>Welcome to the UFO Sightings API</h1>
-            <p>Use the /sightings route to get UFO sighting data.</p>
-        </body>
-    </html>
-    """
-
+# helper functions
 def load_ufo_data(filepath):
     sightings = []
     with open(filepath, mode='r', encoding='utf-8') as file:
@@ -24,8 +22,27 @@ def load_ufo_data(filepath):
             sightings.append(row)
     return sightings
 
-@app.route('/ufo_sightings', methods=['GET'])
-def get_sightings():
-    scrubbed_sightings = load_ufo_data('data/scrubbed.csv')
-    return jsonify(scrubbed_sightings)
 
+# root page
+@app.route("/")
+def home():
+    return """
+    <html>
+      <head>
+        <title>UFO Sightings</title>
+      </head>
+      <body>
+        <h1>Welcome to the UFO Sightings API!</h1>
+        <p>Use the <a href="/sightings">/sightings</a> endpoint route to get UFO sighting data.</p>
+        <hr />
+        <small>I WANT TO BELIEVE</small>
+      </body>
+    </html>
+    """
+
+
+# ufo endpoint
+@app.route('/sightings', methods=['GET'])
+def get_sightings():
+    sightings = load_ufo_data('data/scrubbed.csv')
+    return jsonify(sightings)
