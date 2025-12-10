@@ -44,5 +44,27 @@ def home():
 # ufo endpoint
 @app.route('/sightings', methods=['GET'])
 def get_sightings():
-    sightings = load_ufo_data('data/scrubbed.csv')
+    """Test with e.g. localhost:5000/sightings?country=ca"""
+
+    # in flask, the request that lands on your endpoint is something you have access to *implicitly*
+    # by importing the request object & inspecting it here!
+    # import pprint
+    # pprint.pprint(         # built-in pretty-print module, letting us do nicely formatted printing
+    #     request.__dict__,  # obj.__dict__ dumps an object/instance out as a dictionary of the data it holds
+    #     indent=2
+    # )
+    # print(request.args)
+    # ... or, use breakpoint() to inspect the request object!!!
+    
+    sightings = load_ufo_data('data/scrubbed.csv')  # this is a list of dictionaries, where each sighting is a dict
+
+    country = request.args.get('country', '')  # allow filtration by a ?country={country_code} URLparam
+
+    # we could loop through the list of dicts and remove anything that doesn't match the filter, or...
+    # just write a list expression!
+    if country:
+        sightings = [
+            sighting for sighting in sightings if sighting['country'].lower() == country
+        ]
+
     return jsonify(sightings)
