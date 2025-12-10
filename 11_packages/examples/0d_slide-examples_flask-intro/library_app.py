@@ -28,7 +28,7 @@ def load_books(filepath):
 	books = []
 
 	with open(filepath, mode="r", encoding="utf-8") as f:
-		csv_reader = csv.DictReader(f)
+		csv_reader = csv.DictReader(f)  # assumes the first row in CSV is fieldnames, not values
 		for row in csv_reader:
 			books.append(row)
 
